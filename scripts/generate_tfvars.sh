@@ -21,7 +21,8 @@ GITHUB_OWNER=$(git config --get remote.origin.url | awk -F'[:/]' '{print $(NF-1)
 
 # Define paths
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
+BACKEND_TEMPLATE_FILE="${SCRIPT_DIR}/../iac/backend/terraform.tfvars.template"
+BACKEND_TFVARS_FILE="${SCRIPT_DIR}/../iac/backend/terraform.tfvars"
 MANAGEMENT_TEMPLATE_FILE="${SCRIPT_DIR}/../iac/management/terraform.tfvars.template"
 MANAGEMENT_TFVARS_FILE="${SCRIPT_DIR}/../iac/management/terraform.tfvars"
 
