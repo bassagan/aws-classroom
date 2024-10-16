@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - main
       - feature/*
   pull_request:  # To ensure that pull requests are also checked
 
