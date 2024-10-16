@@ -1,0 +1,12 @@
+regions:
+- eu-west-1
+- global
+
+account-blocklist:
+- "1234567890"
+
+accounts:
+  "087559609246":
+    filters:
+      IAMUser:
+        - "administrator"
