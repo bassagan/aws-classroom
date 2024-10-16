@@ -16,6 +16,7 @@ jobs:
   terraform_plan_check:
     name: Terraform Plan Check
     runs-on: ubuntu-latest
+    environment: DEV   # Use the environment where the secrets are configured
 
     steps:
       - name: Checkout code
@@ -25,11 +26,12 @@ jobs:
         uses: hashicorp/setup-terraform@v1
         with:
           terraform_version: 1.0.0
+
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}  # Use the secret from the DEV environment
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}  # Use the secret from the DEV environment
           aws-region: eu-west-1
 
       - name: Make setup_infrastructure.sh executable
@@ -37,7 +39,6 @@ jobs:
 
       - name: Run setup_infrastructure.sh
         run: ./scripts/setup_infrastructure.sh ${{ github.actor }}
-
 
       # Initialize Terraform with Local Backend for Backend Infrastructure
       - name: Initialize Terraform with Local Backend for Backend
