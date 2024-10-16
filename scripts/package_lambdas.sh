@@ -22,7 +22,6 @@ ZIP_OUTPUT_DIR="${SCRIPT_DIR}/../lambda_packages"
 mkdir -p "${ZIP_OUTPUT_DIR}"
 
 # Extract the S3 bucket name from terraform.tfvars in iac/etl
-S3_BUCKET=$(grep 'bucket_name' "${MANAGEMENT_DIR}/terraform.tfvars" | cut -d '=' -f2 | sed 's/[", ]//g')
 OWNER=$(grep 'owner' "${MANAGEMENT_DIR}/terraform.tfvars" | cut -d '=' -f2 | sed 's/[", ]//g')
 
 # Check if the bucket name was extracted correctly
